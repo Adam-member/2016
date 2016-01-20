@@ -39,6 +39,41 @@ public class DriveTrain extends Subsystem {
     		}
     	}
     	}
+    public void defense(){
+    	boolean x;
+    	boolean y;
+        boolean movement;
+    	if(RobotMap.laserEndInches - RobotMap.lowPointInches > RobotMap.lowPointInches - RobotMap.laserStartInches){
+    		x = true;
+    	}
+    	else if(RobotMap.laserEndInches - RobotMap.lowPointInches < RobotMap.lowPointInches - RobotMap.laserStartInches){
+    		y = true;
+    	}
+    	while(y == true){
+    		RobotMap.robotDrive.mecanumDrive_Cartesian(0, 0, 1, 0);
+    	}
+    	while(x == true){
+    		RobotMap.robotDrive.mecanumDrive_Cartesian(0, 0, -1, 0);                                                                                                                                                                                                       
+    	}
+    	if(x == false && y == false){
+    		
+    		movement = true;
+    	}
+    	while(movement == true){
+    		while(RobotMap.topLaserLeftDistance > RobotMap.topLaserRightDistance){
+    			RobotMap.robotDrive.mecanumDrive_Cartesian(1, 0, 0, 0);
+    		}
+    		while(RobotMap.topLaserLeftDistance < RobotMap.topLaserRightDistance){
+    			RobotMap.robotDrive.mecanumDrive_Cartesian(-1, 0, 0, 0);
+    		}
+    		while(RobotMap.topLaserLeftDistance < 15 && RobotMap.topLaserRightDistance < 15){
+    			RobotMap.robotDrive.mecanumDrive_Cartesian(0, -1, 0, 0);
+    		}
+    		while(RobotMap.topLaserLeftDistance > 15 && RobotMap.topLaserRightDistance > 15){
+    			RobotMap.robotDrive.mecanumDrive_Cartesian(0, 1, 0, 0);
+    		}
+    	}
+    }
     public void circle(){
     	while(RobotMap.lightRightValue == false && RobotMap.lightLeftValue == false && RobotMap.gyroValue < 180){
     		RobotMap.robotDrive.arcadeDrive(0, 1);

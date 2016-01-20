@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team2557.robot.subsystems;
 
 import org.usfirst.frc.team2557.robot.RobotMap;
@@ -63,6 +64,9 @@ public class LaserTracking extends Subsystem {
 		
 		if(width > 19 && width < 22){
 			RobotMap.rectangle = true;
+		}
+		if(RobotMap.rectangle == true && notDone == true){
+			RobotMap.driveAdjust = true;
 		}
      
 		if(notDone == true && RobotMap.laserInches > 40){

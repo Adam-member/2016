@@ -28,6 +28,7 @@ public class RobotMap {
 	
 	public static double width;
 	public static boolean rectangle;
+	public static boolean driveAdjust;
 	
 	public static double laserStartInches;
 	public static double laserEndInches;
