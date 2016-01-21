@@ -80,7 +80,22 @@ public class LaserTracking extends Subsystem {
 		firstLength = Math.cos(laserStartAngle) * laserStartInches;
 		secondLength ** 2 = firstLength ** 2 + laserStartInches ** 2; 
 		side1 ** 2 = firstLength ** 2 + secondLength ** 2;
-		firstLength = 
+		firstLength = firstLength ** 2 + laserStartInches ** 2; 
+		secondLength = Math.cos(laserStartAngle) * laserStartInches;
+		side2 ** 2 = firstLength ** 2 + secondLength ** 2;
+		
+		if(side1 > side2){
+			width = side2;
+			length = side1;
+		}
+		else if(side1 < side2){
+			width = side1;
+			length = side2;
+		}
+		else{
+			width = side1;
+			length = side2;
+		}
     } 	
 
 }
