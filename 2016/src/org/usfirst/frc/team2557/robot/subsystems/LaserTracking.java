@@ -77,7 +77,11 @@ public class LaserTracking extends Subsystem {
 		RobotMap.laserEndInches = laserEndInches;
 		RobotMap.laserStartInches = laserStartInches;
 		
-    }  	
+		firstLength = Math.cos(laserStartAngle) * laserStartInches;
+		secondLength ** 2 = firstLength ** 2 + laserStartInches ** 2; 
+		side1 ** 2 = firstLength ** 2 + secondLength ** 2;
+		firstLength = 
+    } 	
 
 }
 
