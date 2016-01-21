@@ -15,6 +15,9 @@ public class DriveTrain extends Subsystem {
 	private double variableMotor;
 	private double rightEncRate;
 	private double leftEncRate;
+	private double first;
+	private double second;
+	private double third;
 	private boolean speedIssue;
     
     // Put methods for controlling this subsystem
@@ -50,30 +53,27 @@ public class DriveTrain extends Subsystem {
     		y = true;
     	}
     	while(y == true){
-    		RobotMap.robotDrive.mecanumDrive_Cartesian(0, 0, 1, 0);
+    		third = 1;
     	}
     	while(x == true){
-    		RobotMap.robotDrive.mecanumDrive_Cartesian(0, 0, -1, 0);                                                                                                                                                                                                       
+    		third = -1;                                                                                                                                                                                                      
     	}
-    	if(x == false && y == false){
-    		
-    		movement = true;
-    	}
-    	while(movement == true){
+
+
     		while(RobotMap.topLaserLeftDistance > RobotMap.topLaserRightDistance){
-    			RobotMap.robotDrive.mecanumDrive_Cartesian(1, 0, 0, 0);
+    			first = 1;
     		}
     		while(RobotMap.topLaserLeftDistance < RobotMap.topLaserRightDistance){
-    			RobotMap.robotDrive.mecanumDrive_Cartesian(-1, 0, 0, 0);
+    			first = -1;
     		}
     		while(RobotMap.topLaserLeftDistance < 15 && RobotMap.topLaserRightDistance < 15){
-    			RobotMap.robotDrive.mecanumDrive_Cartesian(0, -1, 0, 0);
+    			second = -1;
     		}
     		while(RobotMap.topLaserLeftDistance > 15 && RobotMap.topLaserRightDistance > 15){
-    			RobotMap.robotDrive.mecanumDrive_Cartesian(0, 1, 0, 0);
+    			second = 1;
     		}
+    		RobotMap.robotDrive.mecanumDrive_Cartesian(first, second, third, 0); 
     	}
-    }
     public void circle(){
     	while(RobotMap.lightRightValue == false && RobotMap.lightLeftValue == false && RobotMap.gyroValue < 180){
     		RobotMap.robotDrive.arcadeDrive(0, 1);
@@ -103,6 +103,9 @@ public class DriveTrain extends Subsystem {
     		RobotMap.robotDrive.arcadeDrive(1, 0);
     	}
     }// look into the possibility of hybrid code, where top of defend and bottom of defensereality are merged
+    public void defendArcade(){
+    	
+    }
     
     public void defenseReality(){
     	if(RobotMap.rectangle == true){
