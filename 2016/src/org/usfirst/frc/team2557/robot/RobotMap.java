@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2557.robot;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -29,6 +30,9 @@ public class RobotMap {
 	public static double width;
 	public static boolean rectangle;
 	public static boolean driveAdjust;
+	
+	public static BuiltInAccelerometer accelerometer;
+	public static double aDistance[];
 	
 	public static double laserStartInches;
 	public static double laserEndInches;
