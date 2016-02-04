@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class TopLaserLeft extends Subsystem {
+public class NewLaserTracking extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -16,8 +16,11 @@ public class TopLaserLeft extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void checkDistance(){
-    	RobotMap.topLaserLeftDistance = RobotMap.topLaserLeft.getVoltage() / 0.009765;
+    public void laserAdjust(){
+    	if(RobotMap.topLaserLeftDistance < 20){
+    		startInches = RobotMap.topLaserLeftDistance;
+    		startAngle = RobotMap.servoLeftAngle;
+    	}
     }
 }
 

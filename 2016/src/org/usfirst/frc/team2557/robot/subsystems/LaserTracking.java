@@ -31,6 +31,10 @@ public class LaserTracking extends Subsystem {
     private double width;
     private double laserEndAngle;
     private double laserInches;
+    private double laserStartInchesPrev;
+    private double laserStartAnglePrev;
+    private boolean firstTime;
+    
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -43,6 +47,7 @@ public class LaserTracking extends Subsystem {
     	minSweepAngle = -22;
     	maxSweepAngle = 22;
     	notDone = false;
+    	firstTime = true;
     	
     	RobotMap.servoCenterAngle = minSweepAngle;
     	
@@ -52,6 +57,12 @@ public class LaserTracking extends Subsystem {
     		notDone = true;
     		laserStartInches = RobotMap.laserInches;
     		laserStartAngle = RobotMap.laserAngle;
+    		
+    	}
+    	x = RobotMap.servoCenterAngle; 
+    	if(notDone == true && RobotMap.RFArray[x] < RobotMap.RFArray[x-1]{
+    		lowPointInches = RobotMap.laserInches;
+    		lowPointAngle = RobotMap.servoCenterAngle;
     		
     	}
 
@@ -95,6 +106,18 @@ public class LaserTracking extends Subsystem {
 		else{
 			width = side1;
 			length = side2;
+		}
+		if(laserStartInches ** 2 + noHitInches ** 2 > 50 && laserStartInches ** 2 + lowPointInches ** 2 < 45){
+			interest = true;
+		}
+		if(interest == true && laserStartInches ** 2 + laserEndInches ** 2 > 45 && laserStartInches ** 2 + laserEndInches ** 2 < 50){
+			passage = true;
+		}
+		while(passage == true)
+			
+			
+		 
+		
 		}
     } 	
 

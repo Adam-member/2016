@@ -17,8 +17,11 @@ public class RFArray extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void arrayValues(){
+    	i = (int) RobotMap.servoCenterAngle;
     	
-    	RobotMap.RFArray[i] = RobotMap.laserCenter.getVoltage() / 0.009765;
+    	if(RobotMap.servoCenterAngle == i){
+    		RobotMap.RFArray[i] = RobotMap.laserInches;
+    	}
     	RobotMap.RFArray[2] = -20;
     	RobotMap.RFArray[3] = -18;
     	RobotMap.RFArray[4] = -16;
