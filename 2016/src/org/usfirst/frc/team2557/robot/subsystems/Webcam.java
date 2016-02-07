@@ -1,13 +1,11 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
-import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class Gyro extends Subsystem {
+public class Webcam extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -16,9 +14,8 @@ public class Gyro extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void getAngle(){
-    	RobotMap.gyroValue = RobotMap.gyro.getAngle();
-    	RobotMap.gyroOld = RobotMap.gyroValue -360;
+    public void getVideo(){
+    	RobotMap.
     }
 }
 

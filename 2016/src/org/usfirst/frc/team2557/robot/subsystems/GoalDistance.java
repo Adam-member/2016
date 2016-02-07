@@ -49,7 +49,7 @@ public class GoalDistance extends Subsystem {
     		System.out.println("inRange");
     	}
     	else if(RobotMap.shouldShoot == false){
-    		System.out.println("out of range");
+    		System.out.println("out of range");     
     	}
     }
 }

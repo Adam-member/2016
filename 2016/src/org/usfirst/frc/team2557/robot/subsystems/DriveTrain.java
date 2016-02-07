@@ -85,10 +85,11 @@ public class DriveTrain extends Subsystem {
     	}
     }
     public void circle2(){
-    	while(RobotMap.seeGoal == false && RobotMap.gyroValue > 180){
+    	j = RobotMap.gyro.getAngle();
+    	while(j != j-1 && RobotMap.seeGoal == false && RobotMap.gyroValue >= 180){
     		RobotMap.robotDrive.arcadeDrive(0, 1);
     	}
-    	while(RobotMap.seeGoal == false && RobotMap.gyroValue < 180){
+    	while( j != j-1 && RobotMap.seeGoal == false && RobotMap.gyroValue < 180){
     		RobotMap.robotDrive.arcadeDrive(0, -1);
 }
     }

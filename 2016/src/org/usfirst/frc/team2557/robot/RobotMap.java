@@ -20,6 +20,8 @@ public class RobotMap {
 	public static Servo servoCenter;
 	public static Servo servoTop;
 	
+	public static CameraServer webCam;
+	
 	public static boolean seeGoal;
 	public static double goalDistance;
 	public static boolean shouldShoot;
@@ -43,6 +45,7 @@ public class RobotMap {
 	
 	public static Gyro gyro;
 	public static double gyroValue;
+	public static double gyroOld;
 	
 	public static CANTalon leftMotor;
 	public static CANTalon rightMotor;

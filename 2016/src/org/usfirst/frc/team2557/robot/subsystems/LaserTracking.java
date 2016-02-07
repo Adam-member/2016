@@ -107,13 +107,8 @@ public class LaserTracking extends Subsystem {
 			width = side1;
 			length = side2;
 		}
-		if(laserStartInches ** 2 + noHitInches ** 2 > 50 && laserStartInches ** 2 + lowPointInches ** 2 < 45){
-			interest = true;
-		}
-		if(interest == true && laserStartInches ** 2 + laserEndInches ** 2 > 45 && laserStartInches ** 2 + laserEndInches ** 2 < 50){
-			passage = true;
-		}
-		while(passage == true)
+		
+			
 			
 			
 		 
