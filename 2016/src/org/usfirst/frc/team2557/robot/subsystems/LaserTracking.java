@@ -34,6 +34,10 @@ public class LaserTracking extends Subsystem {
     private double laserStartInchesPrev;
     private double laserStartAnglePrev;
     private boolean firstTime;
+    private boolean corner;
+    private double side1;
+    private double side2;
+    private double x;
     
     
     // Put methods for controlling this subsystem
@@ -107,7 +111,8 @@ public class LaserTracking extends Subsystem {
 			width = side1;
 			length = side2;
 		}
-		
+		if(RobotMap.RFArray[x] + RobotMap.RFArray[x-1] fits on a line function && RobotMap.RFArray[x-2] doesnt fit on a line function){
+			corner = true;
 			
 			
 			
