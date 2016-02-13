@@ -4,6 +4,9 @@ package org.usfirst.frc.team2557.robot.subsystems;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import java.lang.Math;
 
 /**
  *
@@ -37,7 +40,7 @@ public class LaserTracking extends Subsystem {
     private boolean corner;
     private double side1;
     private double side2;
-    private double x;
+    private int x;
     
     
     // Put methods for controlling this subsystem
@@ -63,8 +66,8 @@ public class LaserTracking extends Subsystem {
     		laserStartAngle = RobotMap.laserAngle;
     		
     	}
-    	x = RobotMap.servoCenterAngle; 
-    	if(notDone == true && RobotMap.RFArray[x] < RobotMap.RFArray[x-1]{
+    	x = (int) RobotMap.servoCenterAngle; 
+    	if(notDone == true && RobotMap.RFArray[x] < RobotMap.RFArray[x-1]){
     		lowPointInches = RobotMap.laserInches;
     		lowPointAngle = RobotMap.servoCenterAngle;
     		
@@ -92,13 +95,15 @@ public class LaserTracking extends Subsystem {
 		RobotMap.laserEndInches = laserEndInches;
 		RobotMap.laserStartInches = laserStartInches;
 		
-		firstLength = Math.cos(laserStartAngle) * laserStartInches;
-		secondLength ** 2 = firstLength ** 2 + laserStartInches ** 2; 
+		//double myPower = 2;
+		//firstLength = Math.cos(laserStartAngle) * laserStartInches;
+		//Math.pow(secondLength, myPower);
+		/*= firstLength ** 2 + laserStartInches ** 2; 
 		side1 ** 2 = firstLength ** 2 + secondLength ** 2;
 		firstLength = firstLength ** 2 + laserStartInches ** 2; 
 		secondLength = Math.cos(laserStartAngle) * laserStartInches;
 		side2 ** 2 = firstLength ** 2 + secondLength ** 2;
-		
+		*/
 		if(side1 > side2){
 			width = side2;
 			length = side1;
@@ -111,14 +116,12 @@ public class LaserTracking extends Subsystem {
 			width = side1;
 			length = side2;
 		}
-		if(RobotMap.RFArray[x] + RobotMap.RFArray[x-1] fits on a line function && RobotMap.RFArray[x-2] doesnt fit on a line function){
-			corner = true;
-			
-			
-			
-		 
-		
-		}
+		SmartDashboard.putNumber(width, width);
+		SmartDashboard.putNumber(length, length);
+		SmartDashboard.putNumber(laserStartInches, laserStartInches);
+		SmartDashboard.putNumber(laserEndInches, laserEndInches);
+		SmartDashboard.putNumber(RFValue, RobotMap.RFArray[5]);
+		SmartDashboard.putNumber(lowPointInches, lowPointInches);
     } 	
 
 }

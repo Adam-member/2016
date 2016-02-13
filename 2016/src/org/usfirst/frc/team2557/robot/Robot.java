@@ -2,11 +2,14 @@
 package org.usfirst.frc.team2557.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import org.usfirst.frc.team2557.robot.subsystems.RFArray;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team2557.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2557.robot.commands.LaserTrackingCommand;
 import org.usfirst.frc.team2557.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.LaserTracking;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,8 +22,12 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static RFArray RFArray = new RFArray();
+	public static LaserTracking laserTracking = new LaserTracking();
 
     Command autonomousCommand;
+    Command RFArrayCommand;
+    Command LaserTrackingCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -69,6 +76,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        LaserTrackingCommand.start();
+        RFArrayCommand.start();
     }
     
     /**

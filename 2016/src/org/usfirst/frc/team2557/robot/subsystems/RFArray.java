@@ -22,7 +22,7 @@ public class RFArray extends Subsystem {
     	if(RobotMap.servoCenterAngle == i){
     		RobotMap.RFArray[i] = RobotMap.laserInches;
     	}
-    	RobotMap.RFArray[2] = -20;
+    	/*RobotMap.RFArray[2] = -20;
     	RobotMap.RFArray[3] = -18;
     	RobotMap.RFArray[4] = -16;
     	RobotMap.RFArray[5] = -14;
@@ -44,6 +44,7 @@ public class RFArray extends Subsystem {
     	RobotMap.RFArray[21] = 18;
     	RobotMap.RFArray[22] = 20;
     	RobotMap.RFArray[23] = 22;
+    	*/
     }
 }
 
