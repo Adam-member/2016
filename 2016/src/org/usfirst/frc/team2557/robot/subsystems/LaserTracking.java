@@ -116,12 +116,12 @@ public class LaserTracking extends Subsystem {
 			width = side1;
 			length = side2;
 		}
-		SmartDashboard.putNumber(width, width);
-		SmartDashboard.putNumber(length, length);
-		SmartDashboard.putNumber(laserStartInches, laserStartInches);
-		SmartDashboard.putNumber(laserEndInches, laserEndInches);
-		SmartDashboard.putNumber(RFValue, RobotMap.RFArray[5]);
-		SmartDashboard.putNumber(lowPointInches, lowPointInches);
+		SmartDashboard.putNumber("width", width);
+		SmartDashboard.putNumber("length", length);
+		SmartDashboard.putNumber("laserStartInches", laserStartInches);
+		SmartDashboard.putNumber("laserEndInches", laserEndInches);
+		SmartDashboard.putNumber("RFValue", RobotMap.RFArray[5]);
+		SmartDashboard.putNumber("lowPointInches", lowPointInches);
     } 	
 
 }

@@ -1,11 +1,13 @@
 package org.usfirst.frc.team2557.robot;
 
+import org.usfirst.frc.team2557.sensors.LidarRangeFinder;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Gyro;
+//import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Timer;
@@ -17,10 +19,12 @@ import edu.wpi.first.wpilibj.Timer;
  * floating around.
  */
 public class RobotMap {
+	public static LidarRangeFinder LidarSensor;
+	
 	public static Servo servoCenter;
 	public static Servo servoTop;
 	
-	public static CameraServer webCam;
+	//public static CameraServer webCam;
 	
 	public static boolean seeGoal;
 	public static double goalDistance;
@@ -43,7 +47,7 @@ public class RobotMap {
 	public static Counter rightEnc;
 	public static Counter leftEnc;
 	
-	public static Gyro gyro;
+	//public static Gyro gyro;
 	public static double gyroValue;
 	public static double gyroOld;
 	
@@ -69,6 +73,10 @@ public class RobotMap {
 	public static boolean lightRightValue;
 	
 	public static double[] RFArray;
+	
+	public static void init(){
+		LidarSensor = new LidarRangeFinder();
+	}
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static int leftMotor = 1;
