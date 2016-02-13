@@ -1,10 +1,13 @@
 
 package org.usfirst.frc.team2557.robot.subsystems;
 
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team2557.sensors.LidarRangeFinder.LidarData;
 
 import java.lang.Math;
 
@@ -51,27 +54,66 @@ public class LaserTracking extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void adjustForDefense(){
-    	minSweepAngle = -22;
-    	maxSweepAngle = 22;
-    	notDone = false;
+    	//x = 
+    	//RobotMap.laserInches = RobotMap.LidarSensor.getData(x).getDistance();
+    	
+    	int myDistances[] = new int[0];
+    	LidarData distanceData[] = new LidarData[0];
+    	LidarData currentShortest = null;
+    	int myAngle = 0;
+    	for (myAngle = 0; myAngle < 90; myAngle++) {
+    		myDistances[myAngle] = RobotMap.LidarSensor.getData(myAngle + 45).getDistance();
+    		
+    		if (RobotMap.LidarSensor.getData(myAngle + 45).getDistance() < 20) {
+    			distanceData[distanceData.length] = RobotMap.LidarSensor.getData(myAngle + 45);
+    			
+    			if (distanceData.length > 1) {
+    				if (currentShortest == null) {
+    					currentShortest = distanceData[distanceData.length - 1];
+    					continue;
+    				}
+    				
+    				if (currentShortest.getDistance() > distanceData[distanceData.length - 1].getDistance()) {
+    					currentShortest = distanceData[distanceData.length - 1];
+    					
+    				}
+    			
+    			}
+    		}
+    	}
+    	lowPointInches = (double) currentShortest.getDistance();
+    	lowPointAngle = currentShortest.getAngle();
+    	//minSweepAngle = -22;
+    	//maxSweepAngle = 22;
+    	//notDone = false;
     	firstTime = true;
     	
-    	RobotMap.servoCenterAngle = minSweepAngle;
+    	//RobotMap.servoCenterAngle = minSweepAngle;
     	
-    	RobotMap.servoCenterAngle = RobotMap.servoCenter.get() + 1;
-    	
-    	if(RobotMap.laserInches < 20){
+    	//RobotMap.servoCenterAngle = RobotMap.servoCenter.get() + 1;
+
+    	// return if not enough data was found
+    	if (distanceData.length < 3) {
+    		notDone = false;
+//    		return;
+    	} else {
     		notDone = true;
-    		laserStartInches = RobotMap.laserInches;
-    		laserStartAngle = RobotMap.laserAngle;
-    		
     	}
-    	x = (int) RobotMap.servoCenterAngle; 
-    	if(notDone == true && RobotMap.RFArray[x] < RobotMap.RFArray[x-1]){
-    		lowPointInches = RobotMap.laserInches;
-    		lowPointAngle = RobotMap.servoCenterAngle;
+    	
+//    		notDone = true;
+    		laserStartInches = distanceData[0].getDistance();
+    		laserStartAngle = distanceData[0].getAngle();
     		
-    	}
+    		laserEndInches = distanceData[distanceData.length - 1].getDistance();
+    		
+    		
+    	
+    	//x = (int) RobotMap.servoCenterAngle; 
+    	//if(notDone == true && distanceData[x].getDistance() < distanceData[x-1].getDistance()){
+    		//lowPointInches = RobotMap.laserInches;
+    		//lowPointAngle = RobotMap.servoCenterAngle;
+    		
+    	//}
 
 		firstLength = Math.pow(Math.cos((laserStartAngle-90) / hitInches) - Math.cos((lowPointAngle-90) / lowPointInches), 2);
 		secondLength = Math.pow(Math.sin((hitAngle-90) / hitInches) - Math.sin((lowPointAngle-90) / lowPointInches), 2);
@@ -87,13 +129,12 @@ public class LaserTracking extends Subsystem {
 			RobotMap.driveAdjust = true;
 		}
      
-		if(notDone == true && RobotMap.laserInches > 40){
+		/*if(notDone == true && RobotMap.laserInches > 40){
 			laserEndInches = RobotMap.laserInches;
 			laserEndAngle = RobotMap.laserAngle;
-		}
-		RobotMap.width = width;
-		RobotMap.laserEndInches = laserEndInches;
-		RobotMap.laserStartInches = laserStartInches;
+		}*/
+		//RobotMap.width = width;
+	
 		
 		//double myPower = 2;
 		//firstLength = Math.cos(laserStartAngle) * laserStartInches;
