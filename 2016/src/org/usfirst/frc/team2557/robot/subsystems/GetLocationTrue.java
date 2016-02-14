@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class GetLocationTrue extends Subsystem {
+/*public class GetLocationTrue extends Subsystem {
 	public void getLocationTrue(){
 		double[] aDistance = RobotMap.aDistance;
 		 public double xcelx = RobotMap.accelerometer.getX();
@@ -85,4 +85,4 @@ public class GetLocationTrue extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 }
-
+*/

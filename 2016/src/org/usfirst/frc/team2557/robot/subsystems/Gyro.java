@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2557.robot.subsystems;
+/*package org.usfirst.frc.team2557.robot.subsystems;
 
 import org.usfirst.frc.team2557.robot.RobotMap;
 
@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Gyro extends Subsystem {
+/*public class Gyro extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -21,4 +21,4 @@ public class Gyro extends Subsystem {
     	RobotMap.gyroOld = RobotMap.gyroValue -360;
     }
 }
-
+*/

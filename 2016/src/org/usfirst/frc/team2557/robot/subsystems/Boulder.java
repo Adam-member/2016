@@ -1,11 +1,11 @@
-package org.usfirst.frc.team2557.robot.subsystems;
+/*package org.usfirst.frc.team2557.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import java.lang.Math;
 /**
  *
  */
-public class Boulder extends Subsystem {
+/*public class Boulder extends Subsystem {
 	private double x;
     private double y;
     private boolean boulder;
@@ -29,4 +29,4 @@ public class Boulder extends Subsystem {
     }
     }
 }
-
+*/
