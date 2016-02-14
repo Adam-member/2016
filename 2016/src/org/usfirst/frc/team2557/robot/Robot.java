@@ -3,6 +3,8 @@ package org.usfirst.frc.team2557.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import org.usfirst.frc.team2557.robot.subsystems.RFArray;
+import org.usfirst.frc.team2557.sensors.LidarRangeFinder;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -10,6 +12,7 @@ import org.usfirst.frc.team2557.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2557.robot.commands.LaserTrackingCommand;
 import org.usfirst.frc.team2557.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LaserTracking;
+import org.usfirst.frc.team2557.robot.commands.RFArrayCommand;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static RFArray RFArray = new RFArray();
 	public static LaserTracking laserTracking = new LaserTracking();
+	public static LidarRangeFinder lidarRangeFinder = new LidarRangeFinder();
 
     Command autonomousCommand;
     Command RFArrayCommand;
@@ -37,6 +41,9 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        RFArrayCommand = new RFArrayCommand();
+        LaserTrackingCommand = new LaserTrackingCommand();
+        
     }
 	
 	public void disabledPeriodic() {
