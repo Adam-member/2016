@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2557.robot.subsystems;
+/*package org.usfirst.frc.team2557.robot.subsystems;
 
 import org.usfirst.frc.team2557.robot.RobotMap;
 
@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class RFArray extends Subsystem {
+/*public class RFArray extends Subsystem {
     private int i;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -44,7 +44,7 @@ public class RFArray extends Subsystem {
     	RobotMap.RFArray[21] = 18;
     	RobotMap.RFArray[22] = 20;
     	RobotMap.RFArray[23] = 22;
-    	*/
+    	
     }
 }
-
+*/

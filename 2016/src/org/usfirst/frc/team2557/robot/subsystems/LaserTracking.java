@@ -2,6 +2,7 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
 import org.usfirst.frc.team2557.robot.Robot;
+
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.sensors.LidarRangeFinder.LidarData;
 
 import java.lang.Math;
+//import java.util.Arrays;
 
 /**
  *
@@ -24,7 +26,7 @@ public class LaserTracking extends Subsystem {
     private double inchesFront;
     private double hitInches;
     private double hitAngle;
-    private double laserStartInches;
+    public double laserStartInches;
     private double laserStartAngle;
     private double laserEndInches;
     private double firstLength;
@@ -53,36 +55,43 @@ public class LaserTracking extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void adjustForDefense(){
+    
+    public void adjustForDefense(){              
     	//x = 
     	//RobotMap.laserInches = RobotMap.LidarSensor.getData(x).getDistance();
+    	int dataCount = 0;
     	
-    	int myDistances[] = new int[0];
-    	LidarData distanceData[] = new LidarData[0];
+    	int myDistances[] = new int[90];
+    	//Arrays myTestArray = Arrays.
+    	LidarData distanceData[] = new LidarData[90];
     	LidarData currentShortest = null;
     	int myAngle = 0;
     	for (myAngle = 0; myAngle < 90; myAngle++) {
     		myDistances[myAngle] = RobotMap.LidarSensor.getData(myAngle + 45).getDistance();
     		
-    		if (RobotMap.LidarSensor.getData(myAngle + 45).getDistance() < 20) {
-    			distanceData[distanceData.length] = RobotMap.LidarSensor.getData(myAngle + 45);
+    		System.out.print(myDistances[myAngle] + " ");
+    		
+    		if (myAngle > 0 && myAngle % 5 == 0) {
+    			System.out.println();
+    		}
+    		
+    		if (myDistances[myAngle] < 2000 && myDistances[myAngle] != 0) {
+    			distanceData[dataCount] = RobotMap.LidarSensor.getData(myAngle + 45);
+				
+    			if (currentShortest == null) {
+					currentShortest = distanceData[dataCount];
+					dataCount++;
+					continue;
+				}
+				
+   				if (currentShortest.getDistance() > distanceData[dataCount].getDistance()) {
+   					currentShortest = distanceData[dataCount];   					
+   				}
     			
-    			if (distanceData.length > 1) {
-    				if (currentShortest == null) {
-    					currentShortest = distanceData[distanceData.length - 1];
-    					continue;
-    				}
-    				
-    				if (currentShortest.getDistance() > distanceData[distanceData.length - 1].getDistance()) {
-    					currentShortest = distanceData[distanceData.length - 1];
-    					
-    				}
-    			
-    			}
+    			dataCount++;
     		}
     	}
-    	lowPointInches = (double) currentShortest.getDistance();
-    	lowPointAngle = currentShortest.getAngle();
+
     	//minSweepAngle = -22;
     	//maxSweepAngle = 22;
     	//notDone = false;
@@ -93,7 +102,7 @@ public class LaserTracking extends Subsystem {
     	//RobotMap.servoCenterAngle = RobotMap.servoCenter.get() + 1;
 
     	// return if not enough data was found
-    	if (distanceData.length < 3) {
+    	if (dataCount < 3) {
     		notDone = false;
 //    		return;
     	} else {
@@ -101,11 +110,15 @@ public class LaserTracking extends Subsystem {
     	}
     	
 //    		notDone = true;
-    		laserStartInches = distanceData[0].getDistance();
-    		laserStartAngle = distanceData[0].getAngle();
-    		
-    		laserEndInches = distanceData[distanceData.length - 1].getDistance();
-    		
+    	if (notDone) {
+  		laserStartInches = (double) distanceData[0].getDistance();
+   		laserStartAngle = distanceData[0].getAngle();
+
+    	lowPointInches = (double) currentShortest.getDistance();
+    	lowPointAngle = currentShortest.getAngle();
+    	    	
+   		laserEndInches = (double) distanceData[dataCount - 1].getDistance();
+    	}
     		
     	
     	//x = (int) RobotMap.servoCenterAngle; 
@@ -161,7 +174,7 @@ public class LaserTracking extends Subsystem {
 		SmartDashboard.putNumber("length", length);
 		SmartDashboard.putNumber("laserStartInches", laserStartInches);
 		SmartDashboard.putNumber("laserEndInches", laserEndInches);
-		SmartDashboard.putNumber("RFValue", RobotMap.RFArray[5]);
+		//SmartDashboard.putNumber("RFValue", RobotMap.RFArray[5]);
 		SmartDashboard.putNumber("lowPointInches", lowPointInches);
     } 	
 

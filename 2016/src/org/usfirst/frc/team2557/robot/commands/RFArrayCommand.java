@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2557.robot.commands;
+/*package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.Robot;
 
@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RFArrayCommand extends Command {
+/*public class RFArrayCommand extends Command {
 
     public RFArrayCommand() {
     	requires(Robot.RFArray);
@@ -38,3 +38,4 @@ public class RFArrayCommand extends Command {
     protected void interrupted() {
     }
 }
+*/
